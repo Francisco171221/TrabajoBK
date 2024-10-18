@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const { SerialPort } = require('serialport');
 
 const { ReadlineParser } = require('@serialport/parser-readline');
-const Sensor =mongoose.model('Sensor');
+const Sensor =mongoose.model('Sensore');
 
 const arduinoPort = "COM4";
 

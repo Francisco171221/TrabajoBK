@@ -3,10 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://127.0.0.1:27017/test');
+
+//lista de modelos
+require('./model/sensores');
+require('./model/empleado');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var sensorRouter = require('./routes/sensor');
+var empleadoRouter = require('./routes/empleados');
 
 var app = express();
 
@@ -23,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sensor',sensorRouter);
+app.use('/empleado',empleadoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
