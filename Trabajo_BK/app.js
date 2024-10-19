@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/test');
+mongoose.connect('mongodb+srv://2120100403:PEHGpOSWhEEzGh3T@cluster1.6y37m.mongodb.net/');
 
 //lista de modelos
 require('./model/sensores');
