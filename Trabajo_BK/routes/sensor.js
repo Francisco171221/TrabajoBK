@@ -112,7 +112,8 @@ parser.on('data', function(data,err){
         });
         await distancia.save();
     }*/
-});
+}
+);
 
 arduinoSerialPort.on('error',function(err){
     if(err){

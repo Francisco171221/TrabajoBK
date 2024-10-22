@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
+const {body,validationResult} = require('express-validator');
 
 const Empleado = mongoose.model('Empleado');
 
@@ -21,7 +22,19 @@ router.get('/email', async(req,res)=>{
   res.send({emp});
 })
 
-router.post('/',async (req,res)=>{
+router.post('/',[
+  body('nombre').isLength({min:3,max:30}).withMessage("El campo nombre no debe estar vacio"),
+  body('ap_paterno').isLength({min:3,max:30}),
+  body('telefono').isLength({min:10,max:10}).withMessage("Campo telefono debe tener 10 digitos"),
+  body('email').isEmail().withMessage("Correo electronico no es valido"),
+  body('sueldo').isLength({min:3,max:10}).isDecimal()
+],async (req,res)=>{
+
+  let errores = validationResult(req);
+
+  if(!errores.isEmpty()){
+    res.status(400).json({error: errores.array()});
+  }
 
     let emp = new Empleado({
     nombre:req.body.nombre,
