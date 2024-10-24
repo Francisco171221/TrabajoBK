@@ -79,7 +79,7 @@ router.put('/',async(req,res)=>{
   res.send({emp_modificado});
 });
 //el metodo delete usa params en lugar de body y la informacion viene agregada en la url
-router.delete('/',async(req,res)=>{
+router.delete('/borrar/:email',async(req,res)=>{
   let emp = await Empleado.findOne({email:req.params.email});
 
   if(!emp){
