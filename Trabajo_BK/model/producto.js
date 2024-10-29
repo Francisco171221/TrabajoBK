@@ -12,3 +12,5 @@ const ProductoSchema = new mongoose.Schema({
 ProductoSchema.method.setimgurl = function setimgurl(imagen){
     this.imgurl = "http://localhost:3000/foto/" +imagen;
 }
+
+mongoose.model("Producto", ProductoSchema);
