@@ -28,6 +28,7 @@ router.post('/',upload.single('imagen'),async (req,res)=>{
 });
 
 router.put('/',upload.single('imagen'),async (req,res)=>{
+    
     let prod = await Producto.findOne({nombre: req.body.nombre});
 
     if(!prod){
